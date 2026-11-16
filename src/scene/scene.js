@@ -5,6 +5,9 @@ import { parts } from "../data/parts.js";
 import { rooms } from "../data/rooms.js";
 import { createHouse } from "./house.js";
 import { createRoomHighlights } from "./room-highlight.js";
+import { roomLayout } from "./room-layout.js";
+import { pickRoom } from "./room-picking.js";
+import { INTERIOR_HIDDEN_PARTS } from "./view-state.js";
 import {
   EXPLODE_DURATION_SECONDS,
   ease,
@@ -18,7 +21,8 @@ import {
   MIN_DISTANCE,
 } from "./camera-limits.js";
 
-export function createScene(container) {
+// options.onRoomPick(id) dipanggil saat pengguna mengklik ruangan di model (hanya saat Interior View aktif).
+export function createScene(container, options = {}) {
   // Bila browser tidak mendukung WebGL, baris ini melempar galat yang ditangani di main.js.
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -85,6 +89,46 @@ export function createScene(container) {
     explodedTarget = isExploded ? 1 : 0;
   }
 
+  // F2: Interior View menyembunyikan atap dan satu sisi dinding.
+  let interiorActive = false;
+
+  function setInterior(isInterior) {
+    interiorActive = isInterior;
+    for (const mesh of house.children) {
+      mesh.visible = !(isInterior && INTERIOR_HIDDEN_PARTS.includes(mesh.name));
+    }
+  }
+
+  // F6: mengklik ruangan langsung di model, hanya saat Interior View aktif.
+  // Seretan (memutar kamera) tidak dihitung sebagai klik.
+  const raycaster = new THREE.Raycaster();
+  let pointerStart = null;
+
+  renderer.domElement.addEventListener("pointerdown", (event) => {
+    pointerStart = { x: event.clientX, y: event.clientY };
+  });
+
+  renderer.domElement.addEventListener("pointerup", (event) => {
+    const start = pointerStart;
+    pointerStart = null;
+    if (!start || !interiorActive || !options.onRoomPick) return;
+    if (Math.hypot(event.clientX - start.x, event.clientY - start.y) > 5) return;
+
+    const rect = renderer.domElement.getBoundingClientRect();
+    const pointer = new THREE.Vector2(
+      ((event.clientX - rect.left) / rect.width) * 2 - 1,
+      -((event.clientY - rect.top) / rect.height) * 2 + 1,
+    );
+    raycaster.setFromCamera(pointer, camera);
+    const { origin, direction } = raycaster.ray;
+    const id = pickRoom(
+      [origin.x, origin.y, origin.z],
+      [direction.x, direction.y, direction.z],
+      roomLayout,
+    );
+    if (id) options.onRoomPick(id);
+  });
+
   renderer.setAnimationLoop(() => {
     const delta = clock.getDelta();
     if (explodedProgress !== explodedTarget) {
@@ -105,5 +149,5 @@ export function createScene(container) {
     highlights.show(id);
   }
 
-  return { scene, camera, renderer, controls, highlightRoom, setExploded };
+  return { scene, camera, renderer, controls, highlightRoom, setExploded, setInterior };
 }
