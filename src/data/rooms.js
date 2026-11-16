@@ -23,3 +23,8 @@ export const rooms = [
     fungsi: "Tempat mandi dan buang air. Lantainya perlu tidak licin dan mudah mengalirkan air.",
   },
 ];
+
+// Mencari ruangan berdasarkan id. Mengembalikan undefined bila id tidak dikenal.
+export function getRoomById(id) {
+  return rooms.find((room) => room.id === id);
+}
