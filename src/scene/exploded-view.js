@@ -9,6 +9,13 @@ export const explodedOffsets = {
   "dinding-depan": [0, 0, 2],
   "dinding-kiri": [-2, 0, 0],
   "dinding-kanan": [2, 0, 0],
+  // Sekat naik sedikit agar terpisah dari lantai dan dinding luar.
+  "sekat-kiri-1": [0, 1.2, 0],
+  "sekat-kiri-2": [0, 1.2, 0],
+  "sekat-kanan": [0, 1.2, 0],
+  "sekat-belakang": [0, 1.2, 0],
+  "sekat-depan-1": [0, 1.2, 0],
+  "sekat-depan-2": [0, 1.2, 0],
 };
 
 export const EXPLODE_DURATION_SECONDS = 0.5;
