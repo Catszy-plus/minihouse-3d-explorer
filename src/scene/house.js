@@ -24,6 +24,7 @@ export function createHouse(parts) {
     mesh.position.set(...layout.position);
     mesh.name = part.id;
     mesh.userData.kelompok = part.kelompok;
+    mesh.userData.basePosition = [...layout.position]; // posisi saat menyatu (dipakai F3)
 
     // Garis tepi tipis agar bentuk terlihat jelas pada warna putih dan abu-abu.
     const edges = new THREE.LineSegments(

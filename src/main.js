@@ -2,6 +2,7 @@ import "./style.css";
 import { rooms } from "./data/rooms.js";
 import { createScene } from "./scene/scene.js";
 import { initRoomPanel } from "./ui/room-panel.js";
+import { initialViewState, toggleExploded } from "./scene/view-state.js";
 
 const container = document.getElementById("scene");
 const status = document.getElementById("status");
@@ -24,3 +25,16 @@ initRoomPanel({
     if (sceneApi) sceneApi.highlightRoom(id);
   },
 });
+
+// F3: tombol Exploded View.
+let viewState = initialViewState();
+const explodedButton = document.getElementById("btn-exploded");
+if (sceneApi) {
+  explodedButton.addEventListener("click", () => {
+    viewState = toggleExploded(viewState);
+    explodedButton.setAttribute("aria-pressed", String(viewState.exploded));
+    sceneApi.setExploded(viewState.exploded);
+  });
+} else {
+  explodedButton.disabled = true;
+}

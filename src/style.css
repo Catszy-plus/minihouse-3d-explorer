@@ -108,7 +108,8 @@ h1 {
   list-style: none;
 }
 
-.room-list button {
+.room-list button,
+.toggle-button {
   min-height: 44px;
   padding: var(--space-2) var(--space-4);
   border: 1px solid var(--color-border);
@@ -119,13 +120,15 @@ h1 {
   cursor: pointer;
 }
 
-.room-list button[aria-pressed="true"] {
+.room-list button[aria-pressed="true"],
+.toggle-button[aria-pressed="true"] {
   background: var(--color-primary);
   border-color: var(--color-primary);
   color: var(--color-bg);
 }
 
-.room-list button:focus-visible {
+.room-list button:focus-visible,
+.toggle-button:focus-visible {
   outline: 2px solid #1d4ed8;
   outline-offset: 2px;
 }
@@ -156,4 +159,16 @@ h1 {
     border-top: 0;
     border-left: 1px solid var(--color-border);
   }
+}
+
+.view-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-4);
+}
+
+.toggle-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
