@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "app_name": "MiniHouse 3D Explorer",
+    "slug": "minihouse-3d-explorer",
+    "one_liner": "Website 3D interaktif untuk belajar bagian dan fungsi ruangan rumah modern minimalis, dibuat dengan Three.js.",
+    "platform": "web",
+    "level": "dasar",
+    "language": "id",
+    "ai_tools": ["chat-only"],
+    "team_size": 1,
+    "duration_weeks": 1,
+    "delegated_questions": ["C-04", "C-05"],
+    "secondary_platforms": [],
+    "starting_point": "new",
+    "created_date": "2026-11-15",
+    "assistant_proposed": [
+      "meta.one_liner",
+      "meta.duration_weeks",
+      "users[0].quote",
+      "features[0].acceptance",
+      "features[1].acceptance",
+      "features[2].acceptance",
+      "features[3].acceptance",
+      "features[4].acceptance",
+      "features[5].acceptance",
+      "data.entities",
+      "design.primary_color",
+      "design.font",
+      "platform_specific.web.rendering",
+      "risks"
+    ]
+  },
+  "problem": {
+    "statement": "Siswa/mahasiswa yang ingin belajar desain rumah saat ini hanya menonton video YouTube. Jika dibiarkan, pemahaman mereka hanya sebatas teori tanpa praktik yang jelas.",
+    "who": "Siswa/mahasiswa yang ingin mempelajari desain rumah",
+    "current_alternative": "Menonton video YouTube"
+  },
+  "goals": [
+    "Siswa/mahasiswa dapat memahami desain rumah dengan baik lewat eksplorasi model rumah 3D.",
+    "Siswa/mahasiswa mungkin dapat menerapkan apa yang sudah dipelajari."
+  ],
+  "non_goals": [
+    "Membangun rumah yang spesifik atau berada di ranah profesional."
+  ],
+  "users": [
+    {
+      "persona": "Siswa/mahasiswa yang ingin mempelajari desain rumah",
+      "need": "Memahami bentuk rumah, bagian-bagiannya, dan fungsi ruangan lewat praktik langsung, bukan hanya teori dari video.",
+      "quote": "(ilustrasi) Saya ingin belajar desain rumah, tetapi dari video saya hanya dapat teori dan belum bisa mencoba melihat bagian-bagiannya."
+    }
+  ],
+  "user_conditions": [
+    "Antarmuka berbahasa Indonesia",
+    "Responsif di desktop, tablet, dan smartphone"
+  ],
+  "features": [
+    {
+      "id": "F1",
+      "name": "Rotate and Zoom",
+      "description": "Pengguna dapat memutar dan memperbesar atau memperkecil tampilan rumah 3D.",
+      "priority": "must",
+      "acceptance": [
+        "Saat pengguna menyeret mouse atau jari pada kanvas 3D, rumah berputar mengikuti arah seret.",
+        "Saat pengguna menggulir roda mouse atau mencubit layar, tampilan memperbesar atau memperkecil, dan berhenti pada batas jarak minimum dan maksimum kamera."
+      ]
+    },
+    {
+      "id": "F2",
+      "name": "Interior View",
+      "description": "Pengguna dapat melihat bagian dalam rumah dengan menyembunyikan atap dan satu sisi dinding.",
+      "priority": "should",
+      "acceptance": [
+        "Saat tombol Interior View ditekan, atap dan satu sisi dinding tersembunyi sehingga isi ruangan terlihat.",
+        "Saat tombol Interior View ditekan lagi, atap dan dinding muncul kembali seperti semula."
+      ]
+    },
+    {
+      "id": "F3",
+      "name": "Exploded View",
+      "description": "Bagian rumah seperti atap, dinding, dan lantai dapat dipisahkan untuk memperlihatkan susunannya.",
+      "priority": "must",
+      "acceptance": [
+        "Saat tombol Exploded View ditekan, atap, dinding, dan lantai bergeser terpisah dengan animasi.",
+        "Saat tombol Exploded View ditekan lagi, semua bagian kembali ke posisi semula.",
+        "Saat Interior View aktif lalu Exploded View ditekan, Interior View otomatis nonaktif; berlaku juga sebaliknya."
+      ]
+    },
+    {
+      "id": "F4",
+      "name": "Day/Night Mode",
+      "description": "Pengguna dapat mengubah suasana pencahayaan rumah antara siang dan malam.",
+      "priority": "could",
+      "acceptance": [
+        "Saat tombol Day/Night ditekan, warna langit dan intensitas cahaya berubah ke suasana malam; saat ditekan lagi, kembali ke suasana siang.",
+        "Saat mode malam aktif, warna bagian rumah yang dipilih lewat Change Color tetap sama."
+      ]
+    },
+    {
+      "id": "F5",
+      "name": "Change Color",
+      "description": "Pengguna dapat mengubah warna bagian-bagian rumah.",
+      "priority": "should",
+      "acceptance": [
+        "Saat pengguna memilih warna untuk satu bagian rumah (mis. dinding atau atap), warna bagian itu berubah di model 3D seketika.",
+        "Saat satu bagian berubah warna, bagian rumah lain tidak ikut berubah."
+      ]
+    },
+    {
+      "id": "F6",
+      "name": "Room Information",
+      "description": "Pengguna dapat melihat nama dan fungsi ruangan.",
+      "priority": "must",
+      "acceptance": [
+        "Saat pengguna memilih nama ruangan di panel Daftar Ruangan, panel informasi menampilkan nama dan fungsi ruangan itu, dan ruangan tersebut disorot di model 3D.",
+        "Saat Interior View aktif dan pengguna mengklik sebuah ruangan di model 3D, panel informasi yang sama menampilkan nama dan fungsi ruangan tersebut."
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "name": "Fungsionalitas aplikasi",
+      "target": "Pengguna dapat memutar objek rumah 3D, melakukan zoom in dan zoom out, serta melihat rumah dari berbagai sudut.",
+      "how_measured": "Pengujian langsung di browser untuk memastikan seluruh fitur berjalan tanpa error."
+    },
+    {
+      "name": "Pemahaman pengguna",
+      "target": "Pengguna dapat memahami fungsi dasar ruangan dan mengenali bagian-bagian rumah setelah mencoba aplikasi.",
+      "how_measured": "Beberapa teman mencoba aplikasi, lalu diberi pertanyaan sederhana tentang fungsi ruangan yang mereka lihat."
+    }
+  ],
+  "stack": {
+    "frontend": "JavaScript dengan Vite sebagai alat build; objek 3D dengan Three.js; antarmuka 2D dengan HTML/CSS tanpa pustaka UI",
+    "backend": "Tidak ada",
+    "database": "Tidak ada (data simulasi disimpan di file JavaScript atau JSON di dalam proyek)",
+    "auth": "Tidak ada",
+    "hosting": "Vercel",
+    "testing": "Vitest (unit test)",
+    "keywords": ["JavaScript", "Vite", "Three.js", "HTML/CSS", "Vitest", "Vercel"],
+    "extra": [],
+    "source": "custom",
+    "custom_reason": "Ketentuan tugas dan sekalian ingin belajar Three.js.",
+    "custom_layers": [],
+    "ecosystems": ["node"],
+    "commands": {
+      "install": "npm install",
+      "dev": "npm run dev",
+      "lint": "npm run lint",
+      "typecheck": "",
+      "test": "npm test",
+      "build": "npm run build",
+      "ci_setup": ""
+    },
+    "versions": []
+  },
+  "data": {
+    "entities": [
+      {
+        "name": "Ruangan",
+        "fields": ["id", "nama", "fungsi"]
+      },
+      {
+        "name": "BagianRumah",
+        "fields": ["id", "nama", "kelompok", "warnaBawaan"]
+      }
+    ],
+    "personal_data": "none",
+    "sensitive_notes": ""
+  },
+  "security": {
+    "roles": ["Pengunjung"],
+    "auth_method": "Tidak ada (tanpa login)",
+    "secrets_handling": ".env lokal, tidak di-commit; nilai produksi di pengelola rahasia hosting"
+  },
+  "ai_in_app": {
+    "mode": "none",
+    "purpose": ""
+  },
+  "design": {
+    "tone": "Modern minimalis",
+    "primary_color": "#111111",
+    "font": "Font sans-serif bawaan sistem",
+    "dark_mode": false
+  },
+  "platform_specific": {
+    "web": {
+      "rendering": "static",
+      "i18n": false,
+      "seo": false
+    }
+  },
+  "risks": [
+    "Klik ruangan langsung di model 3D (F6) memerlukan deteksi objek di adegan 3D dan bisa memakan waktu lebih lama dari perkiraan.",
+    "Performa render 3D bisa menurun di smartphone sehingga animasi tidak mulus."
+  ],
+  "student_reflection": {
+    "biggest_risk": "Risiko terbesar proyek ini adalah keterbatasan waktu pengerjaan karena tenggat pengumpulan sangat dekat. Saya khawatir website belum selesai, fitur simulasi 3D belum berjalan dengan baik, atau deployment ke Vercel mengalami kendala sehingga URL tidak bisa diakses saat dikumpulkan.",
+    "why_this_project": "sebagai media pembelajaran dan untuk menyelesaikan tugas yang diberikan oleh dosen.",
+    "risk_controls": [
+      "Fitur Should dan Could tidak dikerjakan sebelum F1, F3, dan F6 berjalan, dan tiap fitur Must dibuat dulu dalam versi paling sederhana; hasilnya di browser rumah bisa diputar dan di-zoom (F1), tombol Exploded memisahkan bagian rumah (F3), dan mengklik ruangan menampilkan nama dan fungsinya (F6).",
+      "Sesudah F1 berjalan, website langsung di-deploy ke Vercel, dan deploy diulang setiap fitur Must selesai; hasilnya URL Vercel bisa dibuka dari browser lain (mis. HP) dan menampilkan rumah 3D sebelum fitur berikutnya dimulai.",
+      "Sebelum tenggat, jalankan npm test, npm run lint, dan npm run build, lalu buka URL Vercel di browser; hasilnya ketiga perintah selesai tanpa error dan URL terbuka dengan fitur Must berfungsi."
+    ]
+  }
+}
