@@ -10,12 +10,12 @@ Siswa/mahasiswa yang ingin belajar desain rumah sering hanya menonton video, seh
 
 | ID | Fitur | Prioritas | Status |
 |---|---|---|---|
-| F1 | Rotate and Zoom | must | direncanakan |
-| F2 | Interior View | should | direncanakan |
-| F3 | Exploded View | must | direncanakan |
-| F4 | Day/Night Mode | could | direncanakan |
-| F5 | Change Color | should | direncanakan |
-| F6 | Room Information | must | direncanakan |
+| F1 | Rotate and Zoom | must | selesai |
+| F2 | Interior View | should | selesai |
+| F3 | Exploded View | must | selesai |
+| F4 | Day/Night Mode | could | selesai |
+| F5 | Change Color | should | selesai |
+| F6 | Room Information | must | selesai |
 
 ## Tech Stack
 
@@ -36,7 +36,7 @@ Siswa/mahasiswa yang ingin belajar desain rumah sering hanya menonton video, seh
    npm install
    ```
 4. Tidak ada variabel lingkungan yang wajib. Bila nanti dibutuhkan, salin `.env.example` menjadi `.env` dan isi nilainya (jangan di-commit).
-5. Jalankan mode pengembangan (tersedia setelah T-001):
+5. Jalankan mode pengembangan:
    ```bash
    npm run dev
    ```
@@ -48,8 +48,8 @@ Siswa/mahasiswa yang ingin belajar desain rumah sering hanya menonton video, seh
 |---|---|
 | `npm install` | Memasang dependensi |
 | `npm run dev` | Menjalankan server pengembangan Vite |
-| `npm run lint` | Menjalankan ESLint (tersedia setelah T-001) |
-| `npm test` | Menjalankan Vitest (tersedia setelah T-001) |
+| `npm run lint` | Menjalankan ESLint |
+| `npm test` | Menjalankan Vitest |
 | `npm run build` | Membangun hasil akhir untuk Vercel |
 
 ## Project Structure
@@ -96,4 +96,4 @@ Proyek ini disusun dengan bantuan alat AI berupa chat di browser (salin-tempel m
 
 ## Status
 
-Tahap perencanaan; dokumen proyek siap, implementasi belum dimulai. Lihat `docs/PROGRESS.md`.
+Semua fitur F1 sampai F6 sudah dibuat dan online di https://minihouse-3d-explorer.vercel.app/. Lihat `docs/PROGRESS.md`.

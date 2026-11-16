@@ -35,3 +35,5 @@ Format satu baris yang dipakai nanti: `tanggal | task | hambatan | yang sudah di
 Format entri: `tanggal | siapa (manusia atau nama alat) | task | hasil | catatan untuk sesi berikutnya`.
 
 2026-11-15 | asisten penyusun dokumen | pembuatan dokumen | 16 dokumen dan pendukung git | mulai dari T-001
+
+2026-11-16 | F1 sampai F6 selesai dan online, tanggal hari ini, dan berikutnya T-012 dan T-013.

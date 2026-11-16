@@ -12,9 +12,9 @@
       <p class="hint">Seret untuk memutar rumah, gulir atau cubit untuk memperbesar dan memperkecil.</p>
     </header>
     <div id="status" role="status"></div>
-    <div class="layout">
-      <main id="scene" role="img" aria-label="Model rumah 3D yang dapat diputar dan diperbesar"></main>
-      <aside class="panel">
+    <main class="layout">
+      <div id="scene" role="img" aria-label="Model rumah 3D yang dapat diputar dan diperbesar"></div>
+      <aside class="panel" aria-label="Panel kontrol rumah">
         <section aria-labelledby="view-title">
           <h2 id="view-title">Tampilan</h2>
           <div class="view-controls">
@@ -34,7 +34,8 @@
         </section>
         <section id="room-info" class="room-info" aria-live="polite"></section>
       </aside>
-    </div>
+    </main>
+    <noscript>Website ini membutuhkan JavaScript. Aktifkan JavaScript di browser Anda.</noscript>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
