@@ -7,11 +7,12 @@ export const parts = [
   { id: "dinding-kanan", nama: "Dinding Kanan", kelompok: "dinding", warnaBawaan: "#f2f2f2" },
   { id: "dinding-depan", nama: "Dinding Depan", kelompok: "dinding", warnaBawaan: "#f2f2f2" },
   { id: "atap", nama: "Atap", kelompok: "atap", warnaBawaan: "#4a4a4a" },
-  // Tembok pemisah antarruangan (sekat). Sekat kiri dan depan punya celah untuk pintu antarruangan.
+  // Tembok pemisah antarruangan (sekat). Sekat kiri, depan, dan belakang punya celah pintu agar semua ruangan bisa dimasuki.
   { id: "sekat-kiri-1", nama: "Sekat Kiri 1", kelompok: "dinding", warnaBawaan: "#f2f2f2" },
   { id: "sekat-kiri-2", nama: "Sekat Kiri 2", kelompok: "dinding", warnaBawaan: "#f2f2f2" },
   { id: "sekat-kanan", nama: "Sekat Kanan", kelompok: "dinding", warnaBawaan: "#f2f2f2" },
-  { id: "sekat-belakang", nama: "Sekat Belakang", kelompok: "dinding", warnaBawaan: "#f2f2f2" },
+  { id: "sekat-belakang-1", nama: "Sekat Belakang 1", kelompok: "dinding", warnaBawaan: "#f2f2f2" },
+  { id: "sekat-belakang-2", nama: "Sekat Belakang 2", kelompok: "dinding", warnaBawaan: "#f2f2f2" },
   { id: "sekat-depan-1", nama: "Sekat Depan 1", kelompok: "dinding", warnaBawaan: "#f2f2f2" },
   { id: "sekat-depan-2", nama: "Sekat Depan 2", kelompok: "dinding", warnaBawaan: "#f2f2f2" },
 ];

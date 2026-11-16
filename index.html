@@ -8,31 +8,34 @@
   </head>
   <body>
     <header>
-      <h1>MiniHouse 3D Explorer</h1>
-      <p class="hint">Seret untuk memutar rumah, gulir atau cubit untuk memperbesar dan memperkecil.</p>
+      <span class="brand-icon" aria-hidden="true">🏠</span>
+      <div>
+        <h1>MiniHouse 3D Explorer</h1>
+        <p class="hint">Seret untuk memutar rumah, gulir atau cubit untuk memperbesar dan memperkecil.</p>
+      </div>
     </header>
     <div id="status" role="status"></div>
     <main class="layout">
       <div id="scene" role="img" aria-label="Model rumah 3D yang dapat diputar dan diperbesar"></div>
       <aside class="panel" aria-label="Panel kontrol rumah">
-        <section aria-labelledby="view-title">
+        <section class="card" aria-labelledby="view-title">
           <h2 id="view-title">Tampilan</h2>
-          <div class="view-controls">
-            <button type="button" id="btn-interior" class="toggle-button" aria-pressed="false">Interior View</button>
-            <button type="button" id="btn-exploded" class="toggle-button" aria-pressed="false">Exploded View</button>
-            <button type="button" id="btn-night" class="toggle-button" aria-pressed="false">Mode Siang/Malam</button>
+          <div class="stack">
+            <button type="button" id="btn-interior" class="toggle-button" aria-pressed="false"><span class="btn-icon" aria-hidden="true">🚪</span><span>Interior View</span></button>
+            <button type="button" id="btn-exploded" class="toggle-button" aria-pressed="false"><span class="btn-icon" aria-hidden="true">🧩</span><span>Exploded View</span></button>
+            <button type="button" id="btn-night" class="toggle-button" aria-pressed="false"><span class="btn-icon" aria-hidden="true">🌗</span><span>Mode Siang/Malam</span></button>
           </div>
         </section>
-        <section aria-labelledby="color-title">
-          <h2 id="color-title">Warna</h2>
-          <div id="color-groups" class="view-controls" role="group" aria-label="Bagian rumah"></div>
-          <ul id="color-swatches" class="swatch-list"></ul>
-        </section>
-        <section aria-labelledby="room-list-title">
+        <section class="card" aria-labelledby="room-list-title">
           <h2 id="room-list-title">Daftar Ruangan</h2>
           <ul id="room-list" class="room-list"></ul>
+          <div id="room-info" class="room-info" aria-live="polite"></div>
         </section>
-        <section id="room-info" class="room-info" aria-live="polite"></section>
+        <section class="card" aria-labelledby="color-title">
+          <h2 id="color-title">Warna</h2>
+          <div id="color-groups" class="chips" role="group" aria-label="Bagian rumah"></div>
+          <ul id="color-swatches" class="swatch-list"></ul>
+        </section>
       </aside>
     </main>
     <noscript>Website ini membutuhkan JavaScript. Aktifkan JavaScript di browser Anda.</noscript>

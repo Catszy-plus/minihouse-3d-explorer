@@ -29,7 +29,7 @@ Kesalahan berulang dan pelajaran dari proyek ini. **Dibaca agen di awal setiap s
 
 ## Reflection Prompts
 
-1. Keputusan apa yang kamu ubah selama pengerjaan, dan mengapa?
+1. Keputusan apa yang kamu ubah selama pengerjaan, dan mengapa? 
 2. Bagian mana yang dikerjakan AI dengan baik, dan mana yang salah atau perlu kamu perbaiki?
 3. Apakah urutan fitur Must dulu (R1) membantu menyelesaikan tugas tepat waktu? Jelaskan.
 4. Apa yang akan kamu lakukan berbeda jika mengerjakan proyek ini lagi?

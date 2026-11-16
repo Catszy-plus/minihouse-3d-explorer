@@ -18,7 +18,7 @@ export function initColorPicker({ groupListElement, swatchListElement, groups, p
   for (const group of groups) {
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "toggle-button";
+    button.className = "chip";
     button.textContent = group.nama;
     button.addEventListener("click", () => {
       selectedGroup = group.kelompok;

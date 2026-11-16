@@ -28,8 +28,8 @@ describe("pickRoom (F6)", () => {
   it("memilih ruangan tepat di bawah sinar yang turun dari atas", () => {
     expect(pickRoom([-1.425, 10, 0.925], [0, -1, 0], roomLayout)).toBe("ruang-tamu");
     expect(pickRoom([-1.425, 10, -0.925], [0, -1, 0], roomLayout)).toBe("kamar-tidur");
-    expect(pickRoom([1.425, 10, -0.925], [0, -1, 0], roomLayout)).toBe("dapur");
-    expect(pickRoom([1.425, 10, 0.925], [0, -1, 0], roomLayout)).toBe("kamar-mandi");
+    expect(pickRoom([1.425, 10, -0.925], [0, -1, 0], roomLayout)).toBe("kamar-mandi");
+    expect(pickRoom([1.425, 10, 0.925], [0, -1, 0], roomLayout)).toBe("dapur");
   });
 
   it("memilih ruangan terdekat bila sinar menembus beberapa ruangan", () => {

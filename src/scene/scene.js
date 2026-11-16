@@ -27,7 +27,8 @@ import {
 export function createScene(container, options = {}) {
   // Bila browser tidak mendukung WebGL, baris ini melempar galat yang ditangani di main.js.
   const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  // Batasi pixel ratio agar tampilan tetap tajam tanpa membebani GPU berlebihan.
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   container.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
@@ -63,7 +64,8 @@ export function createScene(container, options = {}) {
     const width = container.clientWidth;
     const height = container.clientHeight;
     if (width === 0 || height === 0) return;
-    renderer.setSize(width, height);
+    // Ukuran CSS canvas diatur oleh #scene; renderer hanya mengatur buffer gambar.
+    renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
   }
