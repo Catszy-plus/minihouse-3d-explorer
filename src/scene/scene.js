@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { parts } from "../data/parts.js";
 import { rooms } from "../data/rooms.js";
+import { createEnvironment } from "./environment.js";
 import { createHouse } from "./house.js";
 import { createRoomHighlights } from "./room-highlight.js";
 import { roomLayout } from "./room-layout.js";
@@ -43,6 +44,7 @@ export function createScene(container, options = {}) {
 
   const house = createHouse(parts);
   scene.add(house);
+  scene.add(createEnvironment());
 
   const highlights = createRoomHighlights(rooms);
   scene.add(highlights.group);
