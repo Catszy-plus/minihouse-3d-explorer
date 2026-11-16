@@ -6,6 +6,12 @@ import { rooms } from "../data/rooms.js";
 import { createHouse } from "./house.js";
 import { createRoomHighlights } from "./room-highlight.js";
 import {
+  EXPLODE_DURATION_SECONDS,
+  ease,
+  explodedOffsets,
+  stepProgress,
+} from "./exploded-view.js";
+import {
   CAMERA_TARGET,
   INITIAL_CAMERA_POSITION,
   MAX_DISTANCE,
@@ -29,7 +35,8 @@ export function createScene(container) {
   sun.position.set(6, 10, 8);
   scene.add(sun);
 
-  scene.add(createHouse(parts));
+  const house = createHouse(parts);
+  scene.add(house);
 
   const highlights = createRoomHighlights(rooms);
   scene.add(highlights.group);
@@ -55,7 +62,40 @@ export function createScene(container) {
   new ResizeObserver(resize).observe(container);
   resize();
 
+  // F3: Exploded View. Progres 0 = menyatu, 1 = terpisah; bagian bergeser perlahan.
+  const clock = new THREE.Clock();
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let explodedTarget = 0;
+  let explodedProgress = 0;
+
+  function applyExploded() {
+    const amount = ease(explodedProgress);
+    for (const mesh of house.children) {
+      const offset = explodedOffsets[mesh.name] ?? [0, 0, 0];
+      const base = mesh.userData.basePosition;
+      mesh.position.set(
+        base[0] + offset[0] * amount,
+        base[1] + offset[1] * amount,
+        base[2] + offset[2] * amount,
+      );
+    }
+  }
+
+  function setExploded(isExploded) {
+    explodedTarget = isExploded ? 1 : 0;
+  }
+
   renderer.setAnimationLoop(() => {
+    const delta = clock.getDelta();
+    if (explodedProgress !== explodedTarget) {
+      explodedProgress = stepProgress(
+        explodedProgress,
+        explodedTarget,
+        delta,
+        reduceMotion ? 0 : EXPLODE_DURATION_SECONDS,
+      );
+      applyExploded();
+    }
     controls.update();
     renderer.render(scene, camera);
   });
@@ -65,5 +105,5 @@ export function createScene(container) {
     highlights.show(id);
   }
 
-  return { scene, camera, renderer, controls, highlightRoom };
+  return { scene, camera, renderer, controls, highlightRoom, setExploded };
 }
