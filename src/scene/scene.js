@@ -2,7 +2,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { parts } from "../data/parts.js";
+import { rooms } from "../data/rooms.js";
 import { createHouse } from "./house.js";
+import { createRoomHighlights } from "./room-highlight.js";
 import {
   CAMERA_TARGET,
   INITIAL_CAMERA_POSITION,
@@ -28,6 +30,9 @@ export function createScene(container) {
   scene.add(sun);
 
   scene.add(createHouse(parts));
+
+  const highlights = createRoomHighlights(rooms);
+  scene.add(highlights.group);
 
   // F1: seret untuk memutar, roda atau cubit untuk zoom, dengan batas jarak.
   const controls = new OrbitControls(camera, renderer.domElement);
@@ -55,5 +60,10 @@ export function createScene(container) {
     renderer.render(scene, camera);
   });
 
-  return { scene, camera, renderer, controls };
+  // F6: menyorot satu ruangan (atau menghapus sorotan bila id kosong).
+  function highlightRoom(id) {
+    highlights.show(id);
+  }
+
+  return { scene, camera, renderer, controls, highlightRoom };
 }
