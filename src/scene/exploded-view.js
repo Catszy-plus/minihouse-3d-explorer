@@ -13,7 +13,8 @@ export const explodedOffsets = {
   "sekat-kiri-1": [0, 1.2, 0],
   "sekat-kiri-2": [0, 1.2, 0],
   "sekat-kanan": [0, 1.2, 0],
-  "sekat-belakang": [0, 1.2, 0],
+  "sekat-belakang-1": [0, 1.2, 0],
+  "sekat-belakang-2": [0, 1.2, 0],
   "sekat-depan-1": [0, 1.2, 0],
   "sekat-depan-2": [0, 1.2, 0],
 };
