@@ -51,4 +51,7 @@ export function initRoomPanel({ listElement, infoElement, rooms, onSelect }) {
   }
 
   showEmpty();
+
+  // select dikembalikan agar ruangan bisa dipilih juga dari klik di model 3D.
+  return { select };
 }
