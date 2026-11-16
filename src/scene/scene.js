@@ -8,6 +8,7 @@ import { createRoomHighlights } from "./room-highlight.js";
 import { roomLayout } from "./room-layout.js";
 import { pickRoom } from "./room-picking.js";
 import { INTERIOR_HIDDEN_PARTS } from "./view-state.js";
+import { lightingPreset } from "./day-night.js";
 import {
   EXPLODE_DURATION_SECONDS,
   ease,
@@ -34,7 +35,8 @@ export function createScene(container, options = {}) {
   const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
   camera.position.set(...INITIAL_CAMERA_POSITION);
 
-  scene.add(new THREE.HemisphereLight(0xffffff, 0x9e9e9e, 1.5));
+  const hemisphere = new THREE.HemisphereLight(0xffffff, 0x9e9e9e, 1.5);
+  scene.add(hemisphere);
   const sun = new THREE.DirectionalLight(0xffffff, 2);
   sun.position.set(6, 10, 8);
   scene.add(sun);
@@ -87,6 +89,24 @@ export function createScene(container, options = {}) {
 
   function setExploded(isExploded) {
     explodedTarget = isExploded ? 1 : 0;
+  }
+
+  // F5: mengubah warna semua bagian dalam satu kelompok (mis. dinding). Bagian lain tidak berubah.
+  function setGroupColor(kelompok, hex) {
+    for (const mesh of house.children) {
+      if (mesh.userData.kelompok === kelompok) mesh.material.color.set(hex);
+    }
+  }
+
+  // F4: mode siang atau malam mengubah langit dan cahaya; warna bagian rumah tetap.
+  function setNight(isNight) {
+    const preset = lightingPreset(isNight);
+    scene.background.set(preset.background);
+    hemisphere.color.set(preset.hemisphere.sky);
+    hemisphere.groundColor.set(preset.hemisphere.ground);
+    hemisphere.intensity = preset.hemisphere.intensity;
+    sun.color.set(preset.sun.color);
+    sun.intensity = preset.sun.intensity;
   }
 
   // F2: Interior View menyembunyikan atap dan satu sisi dinding.
@@ -149,5 +169,5 @@ export function createScene(container, options = {}) {
     highlights.show(id);
   }
 
-  return { scene, camera, renderer, controls, highlightRoom, setExploded, setInterior };
+  return { scene, camera, renderer, controls, highlightRoom, setExploded, setInterior, setGroupColor, setNight };
 }
